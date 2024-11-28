@@ -25,12 +25,12 @@ This is a sample image, to show how to add images to your page. To learn more op
 -  E/20/157, Janakantha S.M.B.G., [e20157@eng.pdn.ac.lk](mailto:e20157@eng.pdn.ac.lk)
 
 ## Table of Contents
-1. [Abstraction](#abstraction)
+1. [Abstract](#abstract)
 2. [Links](#links)
 
 ---
 
-## Abstraction
+## Abstract
 
 This project focuses on the design and implementation of a custom 32-bit RISC-V processor supporting the RV32IM instruction set architecture (ISA). Developed as part of the Advanced Computer Architecture course (CO502), the processor encompasses essential features of the RISC-V standard, including integer operations (RV32I) and multiplication/division (M extension).
 
