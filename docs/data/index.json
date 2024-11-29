@@ -1,4 +1,5 @@
 {
+    "title": "RV32IM Pipelined Processor Design",
     "team": [
         {
             "name": "A.M.N.C. Bandara",
@@ -22,5 +23,5 @@
             "email": "isurunawinne@eng.pdn.ac.lk"
         },
     ],
-    "tags": ["CO543", "Advanced Computer Architecture"]
+    "tags": ["CO543", "Advanced Computer Architecture", "RISC V", "RV32IM"]
 }
