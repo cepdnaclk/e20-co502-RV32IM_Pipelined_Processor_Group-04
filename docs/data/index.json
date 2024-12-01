@@ -21,7 +21,7 @@
         {
             "name": "Dr. Isuru Nawinne",
             "email": "isurunawinne@eng.pdn.ac.lk"
-        },
+        }
     ],
     "tags": ["CO543", "Advanced Computer Architecture", "RISC V", "RV32IM"]
 }
