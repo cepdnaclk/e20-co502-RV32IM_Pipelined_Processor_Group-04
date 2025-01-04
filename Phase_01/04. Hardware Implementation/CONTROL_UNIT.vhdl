@@ -32,7 +32,7 @@ entity CONTROL_UNIT is
     FUNC3         : in std_logic_vector (2 downto 0);
 
     -- Output Ports
-    WriteEnable, MemRead, MemWrite, Jump, Branch, MUX1_I_Type, MUX2_I_Type, MUX3_RI_Typ, MUX4_I_Type, MUX5_U_Type : out std_logic;
+    WriteEnable, MemRead, MemWrite, Jump, Branch, MUX1_I_Type, MUX2_I_Type, MUX3_RI_Type, MUX4_I_Type, MUX5_U_Type : out std_logic;
     ALUOP : out std_logic_vector (3 downto 0)      
   ) ;
 end CONTROL_UNIT ; 
@@ -42,43 +42,45 @@ begin
     process (FUNC7, FUNC3, OPCODE)
     begin
         -- R-Type Instructions
-        if (OPCODE = '0110011') then
+        if (OPCODE = "0110011") then
             case( FUNC3 ) is
-                when '000' =>   -- ADD / SUB / MUL (Later) Instruction
-                    if (FUNC7 = '0000000') then
+                when "000" =>   -- ADD / SUB / MUL (Later) Instruction
+                    if (FUNC7 = "0000000") then
                         ALUOP <= "0000";    -- ADD
-                    elsif (FUNC7 = '0100000') then 
+                    elsif (FUNC7 = "0100000") then 
                         ALUOP <= "0001";    -- SUB
                     end if ;
 
-                when '001' =>   -- SLL Instruction
+                when "001" =>   -- SLL Instruction
                     ALUOP <= "0010";
 
-                when '010' =>   -- SLT Instruction
+                when "010" =>   -- SLT Instruction
                     ALUOP <= "0011";
                 
-                when '011' =>   -- SLTU Instruction
+                when "011" =>   -- SLTU Instruction
                     ALUOP <= "0100";
                 
-                when '100' =>   -- XOR Instruction
+                when "100" =>   -- XOR Instruction
                     ALUOP <= "0101";
 
-                when '101' =>   -- SRL/SRA Instruction
+                when "101" =>   -- SRL/SRA Instruction
                     if (FUNC7 = "0000000") then
                         ALUOP <= "0110";  -- SRL 
                     elsif (FUNC7 = "0100000") then
                         ALUOP <= "0111";  -- SRA
                     end if;
                    
-                when '110' =>   -- OR Instruction
+                when "110" =>   -- OR Instruction
                     ALUOP <= "1000";
 
-                when '111' =>   -- XOR Instruction
+                when "111" =>   -- XOR Instruction
                     ALUOP <= "1001";
 
                 when others => -- Unexpected Behaviour
                     ALUOP <= (others => 'X');
             end case ;
+
+            WriteEnable <= '1';
         else
             
         end if;
