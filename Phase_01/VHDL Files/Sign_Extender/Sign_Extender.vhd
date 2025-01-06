@@ -23,6 +23,14 @@ architecture logic_1 of Sign_Extender is
                 Imm_Intermediate := (others => Instruction_input(31));
                 Imm_output <= (Imm_Intermediate(31 downto 12) & Instruction_input(31 downto 20));
 
+            elsif(Instruction_input(6 downto 0) = "0010011") then
+                Imm_Intermediate := (others => Instruction_input(31));
+                Imm_output <= (Imm_Intermediate(31 downto 12) & Instruction_input(31 downto 20));
+            
+            elsif(Instruction_input(6 downto 0) = "1100111") then
+                Imm_Intermediate := (others => Instruction_input(31));
+                Imm_output <= (Imm_Intermediate(31 downto 12) & Instruction_input(31 downto 20));    
+
             -- S type instruction
             elsif (Instruction_input(6 downto 0) = "0100011") then
                 Imm_Intermediate := (others => Instruction_input(31));
@@ -34,6 +42,10 @@ architecture logic_1 of Sign_Extender is
                 Imm_output <= (Imm_Intermediate(31 downto 13) & Instruction_input(31) & Instruction_input(7) & Instruction_input(30 downto 25) & Instruction_input(11 downto 8)  & '0');
 
             -- U type instruction
+            elsif (Instruction_input(6 downto 0) = "0010111") then
+                Imm_Intermediate := (others => '0');
+                Imm_output <= (Instruction_input(31 downto 12) & Imm_Intermediate(11 downto 0));
+
             elsif (Instruction_input(6 downto 0) = "0110111") then
                 Imm_Intermediate := (others => '0');
                 Imm_output <= (Instruction_input(31 downto 12) & Imm_Intermediate(11 downto 0));
