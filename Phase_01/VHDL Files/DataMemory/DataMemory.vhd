@@ -1,3 +1,13 @@
+--- Instruction     DMEMOP     
+--- lb              000
+--- lh              001
+--- lw              010
+--- lbu             011
+--- lhu             100
+--- sb              101
+--- sh              110
+--- sw              111
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
