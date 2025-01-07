@@ -49,12 +49,12 @@ architecture Logic_01 of Data_Memory is
                             
                             elsif DMEMOP = "001" then
                                 --lh instruction
-                                signExtend := (others => DataMem(to_integer(unsigned(MemReadAddress) + 1))(7));
-                                MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress) + 1)) & DataMem(to_integer(unsigned(MemReadAddress)));
+                                signExtend := (others => DataMem(to_integer(unsigned(MemReadAddress)))(7));
+                                MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1));
 
                             elsif DMEMOP = "010" then
                                 --lw Instruction
-                                MemDataOutput <= DataMem(to_integer(unsigned(MemReadAddress) + 3)) & DataMem(to_integer(unsigned(MemReadAddress) + 2)) & DataMem(to_integer(unsigned(MemReadAddress) + 1)) & DataMem(to_integer(unsigned(MemReadAddress)));
+                                MemDataOutput <= DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1)) & DataMem(to_integer(unsigned(MemReadAddress) + 2)) & DataMem(to_integer(unsigned(MemReadAddress) + 3));
                             
                             elsif DMEMOP = "011" then
                                 --lbu instruction
@@ -62,7 +62,7 @@ architecture Logic_01 of Data_Memory is
 
                             elsif DMEMOP = "100" then
                                 --lhu instruction
-                                MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress) + 1)) & DataMem(to_integer(unsigned(MemReadAddress)));
+                                MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1));
 
                             end if;
 
@@ -75,15 +75,15 @@ architecture Logic_01 of Data_Memory is
 
                             elsif DMEMOP = "110" then
                                 --sh instruction
-                                DataMem(to_integer(unsigned(MemReadAddress) + 1)) := MemDataInput(15 downto 8);
-                                DataMem(to_integer(unsigned(MemReadAddress))) := MemDataInput(7 downto 0);
+                                DataMem(to_integer(unsigned(MemReadAddress))) := MemDataInput(15 downto 8);
+                                DataMem(to_integer(unsigned(MemReadAddress) + 1)) := MemDataInput(7 downto 0);
 
                             elsif DMEMOP = "111" then
                                 --sw instruction
-                                DataMem(to_integer(unsigned(MemReadAddress) + 3)) := MemDataInput(31 downto 24);
-                                DataMem(to_integer(unsigned(MemReadAddress) + 2)) := MemDataInput(23 downto 16);
-                                DataMem(to_integer(unsigned(MemReadAddress) + 1)) := MemDataInput(15 downto 8);
-                                DataMem(to_integer(unsigned(MemReadAddress))) := MemDataInput(7 downto 0);
+                                DataMem(to_integer(unsigned(MemReadAddress))) := MemDataInput(31 downto 24);
+                                DataMem(to_integer(unsigned(MemReadAddress) + 1)) := MemDataInput(23 downto 16);
+                                DataMem(to_integer(unsigned(MemReadAddress) + 2)) := MemDataInput(15 downto 8);
+                                DataMem(to_integer(unsigned(MemReadAddress) + 3)) := MemDataInput(7 downto 0);
 
                             end if;
                             --DataMem(to_integer(unsigned(MemReadAddress))) := MemDataInput;
