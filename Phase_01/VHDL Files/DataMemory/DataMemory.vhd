@@ -1,13 +1,3 @@
---- Instruction     DMEMOP     
---- lb              000
---- lh              001
---- lw              010
---- lbu             011
---- lhu             100
---- sb              101
---- sh              110
---- sw              111
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -42,42 +32,78 @@ architecture Logic_01 of Data_Memory is
 
     begin
 
-        process(Clock , Reset, DMEMOP, MemRead, MemWrite, MemReadAddress, MemDataInput)
+        process( MemReadAddress, DMEMOP, MemRead)
             variable DataMem : DataMemory := (others => (others => 'X'));
             variable signExtend : std_logic_vector(31 downto 0) := (others => '0');
+            begin
+
+                if MemRead = '1' then
+                    if DMEMOP = "000" then
+                        --lb instruction
+                        signExtend := (others => DataMem(to_integer(unsigned(MemReadAddress)))(7));
+                        MemDataOutput <= signExtend(31 downto 8) & DataMem(to_integer(unsigned(MemReadAddress)));
+                    
+                    elsif DMEMOP = "001" then
+                        --lh instruction
+                        signExtend := (others => DataMem(to_integer(unsigned(MemReadAddress)))(7));
+                        MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1));
+
+                    elsif DMEMOP = "010" then
+                        --lw Instruction
+                        MemDataOutput <= DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1)) & DataMem(to_integer(unsigned(MemReadAddress) + 2)) & DataMem(to_integer(unsigned(MemReadAddress) + 3));
+                    
+                    elsif DMEMOP = "011" then
+                        --lbu instruction
+                        MemDataOutput <= signExtend(31 downto 8) & DataMem(to_integer(unsigned(MemReadAddress)));
+
+                    elsif DMEMOP = "100" then
+                        --lhu instruction
+                        MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1));
+
+                    end if;
+                end if;
+
+            end process;
+
+
+        
+
+        process(Clock , Reset, DMEMOP, MemWrite, MemReadAddress, MemDataInput)
+            variable DataMem : DataMemory := (others => (others => 'X'));
+            --variable signExtend : std_logic_vector(31 downto 0) := (others => '0');
             begin
 
                 if rising_edge(Clock) then
                     if Reset = '1' then
                         DataMem := (others => (others => 'X'));
                     else
-                        if MemRead = '1' then
-                            if DMEMOP = "000" then
-                                --lb instruction
-                                signExtend := (others => DataMem(to_integer(unsigned(MemReadAddress)))(7));
-                                MemDataOutput <= signExtend(31 downto 8) & DataMem(to_integer(unsigned(MemReadAddress)));
+                        -- if MemRead = '1' then
+                        --     if DMEMOP = "000" then
+                        --         --lb instruction
+                        --         signExtend := (others => DataMem(to_integer(unsigned(MemReadAddress)))(7));
+                        --         MemDataOutput <= signExtend(31 downto 8) & DataMem(to_integer(unsigned(MemReadAddress)));
                             
-                            elsif DMEMOP = "001" then
-                                --lh instruction
-                                signExtend := (others => DataMem(to_integer(unsigned(MemReadAddress)))(7));
-                                MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1));
+                        --     elsif DMEMOP = "001" then
+                        --         --lh instruction
+                        --         signExtend := (others => DataMem(to_integer(unsigned(MemReadAddress)))(7));
+                        --         MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1));
 
-                            elsif DMEMOP = "010" then
-                                --lw Instruction
-                                MemDataOutput <= DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1)) & DataMem(to_integer(unsigned(MemReadAddress) + 2)) & DataMem(to_integer(unsigned(MemReadAddress) + 3));
+                        --     elsif DMEMOP = "010" then
+                        --         --lw Instruction
+                        --         MemDataOutput <= DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1)) & DataMem(to_integer(unsigned(MemReadAddress) + 2)) & DataMem(to_integer(unsigned(MemReadAddress) + 3));
                             
-                            elsif DMEMOP = "011" then
-                                --lbu instruction
-                                MemDataOutput <= signExtend(31 downto 8) & DataMem(to_integer(unsigned(MemReadAddress)));
+                        --     elsif DMEMOP = "011" then
+                        --         --lbu instruction
+                        --         MemDataOutput <= signExtend(31 downto 8) & DataMem(to_integer(unsigned(MemReadAddress)));
 
-                            elsif DMEMOP = "100" then
-                                --lhu instruction
-                                MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1));
+                        --     elsif DMEMOP = "100" then
+                        --         --lhu instruction
+                        --         MemDataOutput <= signExtend(31 downto 16) & DataMem(to_integer(unsigned(MemReadAddress))) & DataMem(to_integer(unsigned(MemReadAddress) + 1));
 
-                            end if;
+                        --     end if;
 
                             --MemDataOutput <= DataMem(to_integer(unsigned(MemReadAddress)));
-                        elsif MemWrite = '1' then
+                        if MemWrite = '1' then
 
                             if DMEMOP = "101" then
                                 --sb instruction
