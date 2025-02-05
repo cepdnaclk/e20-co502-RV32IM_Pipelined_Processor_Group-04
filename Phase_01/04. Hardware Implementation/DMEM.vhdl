@@ -1,20 +1,28 @@
 -- Create by BG
 -- Created on Thu, 02 Jan 2025 at 09:37 PM
--- Last modified on Thu, 02 Jan 2025 at 09:37 PM
+-- Last modified on Tue, 07 Jan 2025 at 09:37 PM
 -- This is the data memory unit for RMV-32IM Pipelined processor
 
--- Not completed
+-------------------------------------------------------------
+--       RV-32IM Pipelined Processor Data Memory Unit      --
+-------------------------------------------------------------
+-- A Data Memory with 7 input streams and 1 output stream. --
+-- Each input and output stream is 32 bit wide.            --
+-- This is a 1KB Data Memory (1024 x 8 bits)               --
+-------------------------------------------------------------
 
--------------------------------------
---   RV-32IM Pipelined Processor   --
---         Data Memory Unit        --
--------------------------------------
--- Containing Modules:             --
--- 1. ALU                          --                   
--- 2. Register Files               --
--- 3. PC                           -- 
--- 4. Controll Unit                --
--------------------------------------
+-----------------------------
+--     DMEM OPERATIONS     --
+-----------------------------
+--    LOAD    |    STORE   --
+--------------+--------------
+--  000 - LB  |  000 - SB  --
+--  001 - LH  |  001 - SH  --
+--  010 - LW  |  111 - SW  --
+--  100 - LBU |            --
+--  101 - LHU |            --
+-----------------------------
+
 
 -- Note: 1 time unit = 1ns/100ps = 10ns
 
@@ -24,106 +32,90 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 -- Entity 
-entity CPU is
+entity DMEM is
   port(
     MemAddress   : in std_logic_vector (31 downto 0);
-    MemDataInput : in std_logic_vector (31)
-    CLK, RESET  : in std_logic;
-    PC          : out std_logic_vector (31 downto 0)
+    MemDataInput : in std_logic_vector (31 downto 0);
+    FUNC3        : in std_logic_vector (2 downto 0);
+    CLK, RESET   : in std_logic;
+    MemRead      : in std_logic;
+    MemWrite     : in std_logic;
+    MemOut       : out std_logic_vector (31 downto 0)
   );
-end CPU; 
+end DMEM; 
 
--- Architecture of the CPU
-architecture CPU_Architecture of CPU is
-    -- Components
-    component ALU is
-      port(
-        DATA1     : in std_logic_vector (31 downto 0);
-        DATA2     : in std_logic_vector (31 downto 0);
-        ALUOP     : in std_logic_vector (3 downto 0);
-        ALURESULT : out std_logic_vector (31 downto 0);
-        ZERO      : out std_logic
-      );
-    end component;
+-- Architecture of the DMEM
+architecture DMEM_Architecture of DMEM is
+  -- Deffinition of the Data memory - 1024 Bytes memory
+  type DataMemory is Array (0 to 1023) of std_logic_vector(7 downto 0);
+  signal MEMORY : DataMemory := (others => (others => '0'));
 
-    component Reg_File
-      port(
-        ReadRegister_1 : in std_logic_vector(31 downto 0);
-        ReadRegister_2 : in std_logic_vector(31 downto 0);
-        WriteRegister  : in std_logic_vector(31 downto 0);
-        WriteData      : in std_logic_vector(31 downto 0);
-        ReadData_1     : out std_logic_vector(31 downto 0);
-        ReadData_2     : out std_logic_vector(31 downto 0);
-        Clk, Reset     : in std_logic;
-        WriteEnable    : in std_logic
-      );
-    end component;
-
-    component mux2_1 is
-      port(
-          input_1  : in std_logic_vector (31 downto 0);
-          input_2  : in std_logic_vector (31 downto 0);
-          selector : in std_logic;
-          output_1 : out std_logic_vector (31 downto 0) -- No ; here
-      );
-    end component;
-
-    -- Internal Signals
-    Signal REGOUT1, REGOUT2, ALURESULT, COMPLEMENT_DATA : std_logic_vector (31 downto 0);
-    Signal ALUOP : std_logic_vector (3 downto 0);
-    Signal ZERO, WriteEnable : std_logic;
-
-    -- Instruction Decording Formats
-    Signal FUNC7, OPCODE : std_logic_vector (6 downto 0);
-    Signal RS1, RS2, RD  : std_logic_vector (4 downto 0);
-    Signal FUNC3         : std_logic_vector (2 downto 0);
-
-    -- Clock period
-    constant clk_period : time := 40 ns;    
 begin
-    ------------------- Component Mapping -------------------
-    ALU_Component : ALU 
-      port map(
-          DATA1     => REGOUT1,
-          DATA2     => SubMuxOut,
-          ALUOP     => ALUOP,
-          ALURESULT => ALURESULT,
-          ZERO      => ZERO
-      );
-
-    ALU_Component : Reg_File 
-      port map(
-        ReadRegister_1 => -- This come from instruction decording,
-        ReadRegister_2 => -- This come from instruction decording,
-        WriteRegister  => -- This come from instruction decording,
-        WriteData      => -- This come from instruction decording,
-        ReadData_1     => REGOUT1,
-        ReadData_2     => REGOUT2,
-        Clk            => CLK,
-        Reset          => RESET,
-        WriteEnable    => WriteEnable
-      );
-
-    SubMux : mux2_1
-      port map(
-        input_1  => REGOUT2,
-        input_2  => COMPLEMENT_DATA,
-        selector => SubMuxSelect,
-        output_1 => SubMuxOut
-      );
-
-    ComplementUnit : Complementer2s
-      port(
-        input_data  => REGOUT2,
-        output_data => COMPLEMENT_DATA
-      );
-
-  -- Program Counter Function
-  process (PC)
-    variable nextPC : unsigned(31 downto 0) := 0;
+  
+  process (CLK, MemAddress, MemRead, FUNC3)
+    variable EXTENDER : std_logic_vector(31 downto 0) := (others => '0');
   begin
-    nextPC := Integer(Unsigned(PC)) + 4;
-    report "PC UPDATED!";
+
+    -- Asynchronous Operations - Read Data
+    if (MemRead = '1') then
+
+      case( FUNC3 ) is
+      
+        when "000" => -- LB
+          EXTENDER := (others => MEMORY(to_integer(Unsigned(MemAddress)))(7));
+          MemOut <= EXTENDER(31 downto 8) & MEMORY(to_integer(Unsigned(MemAddress)));
+
+        when "001" => -- LH
+          EXTENDER := (others => MEMORY(to_integer(Unsigned(MemAddress) + 1))(7));
+          MemOut <= EXTENDER(31 downto 16) & MEMORY(to_integer(Unsigned(MemAddress) + 1)) & MEMORY(to_integer(Unsigned(MemAddress)));
+      
+        when "010" => -- LW
+          MemOut <= MEMORY(to_integer(Unsigned(MemAddress) + 3)) & MEMORY(to_integer(Unsigned(MemAddress) + 2)) & MEMORY(to_integer(Unsigned(MemAddress) + 1)) & MEMORY(to_integer(Unsigned(MemAddress)));
+
+        when "100" => -- LBU
+          EXTENDER := (others => '0');
+          MemOut <= EXTENDER(31 downto 8) & MEMORY(to_integer(Unsigned(MemAddress)));
+
+        when "101" => -- LHU
+          MemOut <= EXTENDER(31 downto 16) & MEMORY(to_integer(Unsigned(MemAddress))) & MEMORY(to_integer(Unsigned(MemAddress) + 1));
+      
+        when others =>
+          MemOut <= (others => 'X');
+      end case ;
+
+    end if;
+
+    -- Synchronous Operations - (Reset, Write)
+    if rising_edge(CLK) then
+
+      -- Reset Data
+      if (RESET = '1') then
+        MEMORY <=  (others => (others =>  '0'));
+
+      -- Write Data
+      elsif (MemWrite = '1') then
+
+        case( FUNC3 ) is
+        
+          when "000" => -- SB
+            MEMORY(to_integer(Unsigned(MemAddress)))     <= MemDataInput(7 downto 0);
+
+          when "001" => -- SH
+            MEMORY(to_integer(Unsigned(MemAddress)))     <= MemDataInput(7 downto 0);
+            MEMORY(to_integer(Unsigned(MemAddress) + 1)) <= MemDataInput(15 downto 8);
+
+          when others => -- SW
+            MEMORY(to_integer(Unsigned(MemAddress)))     <= MemDataInput(7 downto 0);
+            MEMORY(to_integer(Unsigned(MemAddress) + 1)) <= MemDataInput(15 downto 8);
+            MEMORY(to_integer(Unsigned(MemAddress) + 2)) <= MemDataInput(23 downto 16);
+            MEMORY(to_integer(Unsigned(MemAddress) + 3)) <= MemDataInput(31 downto 24);
+        
+        end case ;
+
+      end if;
+
+    end if;
+
   end process;
 
 end architecture;

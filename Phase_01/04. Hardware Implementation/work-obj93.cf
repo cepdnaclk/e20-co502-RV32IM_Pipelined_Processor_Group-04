@@ -1,76 +1,97 @@
 v 4
-file . "CPU.vhdl" "f2103025066e4c5a4da6a49468a408bbe543f5db" "20250104201344.408":
-  entity cpu at 20( 662) + 0 on 4205;
-  architecture cpu_architecture of cpu at 34( 961) + 0 on 4206;
-file . "REG_EX_MEM.vhdl" "8ee75773645b0399b8f0c6ffe7c983795cedcf60" "20250104201344.766":
-  entity reg_ex_mem at 15( 700) + 0 on 4217;
-  architecture ex_mem_architecture of reg_ex_mem at 40( 1390) + 0 on 4218;
-file . "REG_IF_ID.vhdl" "25bd0979bbe3b33190af2f6a9075704a4a56ff23" "20250104201344.956":
-  entity reg_if_id at 15( 692) + 0 on 4223;
-  architecture if_id_architecture of reg_if_id at 29( 1058) + 0 on 4224;
-file . "PC.vhdl" "61ed176ad6ffd884e8b984dedac9bfd42ac38d3c" "20250104201344.722":
-  entity programcounter at 14( 477) + 0 on 4215;
-  architecture pc_architecture of programcounter at 27( 746) + 0 on 4216;
-file . "ALU.vhdl" "7e00f00436cec5decff73b047e1398b3f70205e7" "20250104201344.236":
-  entity alu at 38( 1116) + 0 on 4199;
-  architecture alu_architecture of alu at 54( 1517) + 0 on 4200;
+file . "IMEM_TB.vhdl" "a2aa7abf6a542437c2c8204d226140da9f8be3ca" "20250204134532.732":
+  entity imem_tb at 1( 0) + 0 on 6473;
+  architecture testbench of imem_tb at 8( 118) + 0 on 6474;
+file . "test.vhdl" "f55c3ff6dac6db6c389c88b00c5e9db023c6b90b" "20250204122026.159":
+  entity test at 2( 21) + 0 on 6439;
+  architecture imem_architecture of test at 15( 219) + 0 on 6440;
+file . "IMEM.vhdl" "5824e17f0ef3405e947935d87a6b3dee7bef479f" "20250205045133.964":
+  entity imem at 15( 531) + 0 on 7635;
+  architecture imem_architecture of imem at 33( 877) + 0 on 7636;
+file . "MASKTB.vhdl" "30974afd1531a947a25e77f880f627e2bfb4a9fa" "20250108011531.895":
+  entity masktb at 1( 0) + 0 on 5395;
+  architecture testbench of masktb at 10( 155) + 0 on 5396;
+file . "MASK.vhdl" "5a2c8623967c5939683f0e7f3383db4cf7d0e8dc" "20250205045134.086":
+  entity mask at 15( 565) + 0 on 7639;
+  architecture mask_architecture of mask at 28( 904) + 0 on 7640;
+file . "DMEM.vhdl" "eb055d9cd7eeb64d493dfe36e9bd8ea6962b4ee1" "20250205045133.839":
+  entity dmem at 30( 1031) + 0 on 7631;
+  architecture dmem_architecture of dmem at 48( 1513) + 0 on 7632;
+file . "CPU.vhdl" "3e7ac23081dfd651aa5f739f4d16acb44b14286c" "20250205045133.792":
+  entity cpu at 25( 853) + 0 on 7629;
+  architecture cpu_architecture of cpu at 48( 1453) + 0 on 7630;
+file . "REG_EX_MEM.vhdl" "da96f19995e20f074d1cee9ac7887bbc4b5088fb" "20250205045134.383":
+  entity reg_ex_mem at 15( 700) + 0 on 7649;
+  architecture ex_mem_architecture of reg_ex_mem at 40( 1477) + 0 on 7650;
+file . "REG_IF_ID.vhdl" "c4c0cef384ea2f8b253c875eeed9864f1d641c4b" "20250205045134.567":
+  entity reg_if_id at 15( 692) + 0 on 7655;
+  architecture if_id_architecture of reg_if_id at 29( 1058) + 0 on 7656;
+file . "PC.vhdl" "61ed176ad6ffd884e8b984dedac9bfd42ac38d3c" "20250205045134.318":
+  entity programcounter at 14( 477) + 0 on 7647;
+  architecture pc_architecture of programcounter at 27( 746) + 0 on 7648;
+file . "ALU.vhdl" "10a2fc275abf09c2e2683dbaff7f149d49997d3e" "20250205045133.601":
+  entity alu at 39( 1135) + 0 on 7623;
+  architecture alu_architecture of alu at 55( 1536) + 0 on 7624;
 file . "Reg_File_tb.vhdl" "844340d007c8fdd9fb8f151ed02236e2e5c6e2c6" "20250101134217.955":
   entity reg_file_tb at 2( 21) + 0 on 351;
   architecture behavior of reg_file_tb at 11( 193) + 0 on 352;
-file . "FORWARD.vhdl" "4a92081fe97acfbaa3ad7dcb3d985def8e512e51" "20250104201344.470":
-  entity forwarder at 15( 589) + 0 on 4207;
-  architecture comp_architecture of forwarder at 28( 953) + 0 on 4208;
-file . "SLTU.vhdl" "a021676e38247efe06d8dc0e785606e302f60329" "20250104201345.188":
-  entity setlessthanunsigned at 17( 702) + 0 on 4231;
-  architecture sltu_architecture of setlessthanunsigned at 31( 1133) + 0 on 4232;
-file . "SHIFT.vhdl" "19548ce9e4479eafe5697e28a0fccde00380ab12" "20250104201345.080":
-  entity shifter at 18( 616) + 0 on 4227;
-  architecture shifter_architecture of shifter at 33( 1114) + 0 on 4228;
-file . "MUX2_1.vhdl" "db4f65249d90069c937511d2bf76c46a2711e11c" "20250104201344.532":
-  entity mux2_1 at 17( 643) + 0 on 4209;
-  architecture mux_architecture of mux2_1 at 31( 1053) + 0 on 4210;
-file . "XOR.vhdl" "bb0456e6dcfa322293417eddcb041b3506015dfb" "20250104201345.253":
-  entity xorer at 16( 549) + 0 on 4233;
-  architecture xor_architecture of xorer at 29( 926) + 0 on 4234;
-file . "AND.vhdl" "995f75944cdb6191260d9c7cb84f439aff5f334a" "20250104201344.277":
-  entity ander at 16( 549) + 0 on 4201;
-  architecture and_architecture of ander at 29( 924) + 0 on 4202;
-file . "OR.vhdl" "6f29849663e514570a61e9178ec683871a9b23ff" "20250104201344.658":
-  entity orer at 16( 542) + 0 on 4213;
-  architecture or_architecture of orer at 29( 917) + 0 on 4214;
-file . "ADDER.vhdl" "4428387c4c32704784902cca11b59cb0252d37d4" "20250104201344.174":
-  entity adder at 18( 713) + 0 on 4197;
-  architecture adder_architecture of adder at 32( 1171) + 0 on 4198;
-file . "MUX4_1.vhdl" "8b8d3d3d392d467fef9fbeff69d2a460e803f648" "20250104201344.594":
-  entity mux4_1 at 17( 685) + 0 on 4211;
-  architecture mux_architecture of mux4_1 at 33( 1231) + 0 on 4212;
-file . "SLT.vhdl" "d92dfd0f3ae9f2bbbdb89442b35259ddc58d1678" "20250104201345.124":
-  entity setlessthan at 17( 701) + 0 on 4229;
-  architecture slt_architecture of setlessthan at 31( 1116) + 0 on 4230;
-file . "2sCOMPLEMENTER.vhdl" "e73e9e17ff7eb19e8f5117456614f81ecdacb6e7" "20250104201344.116":
-  entity complementer2s at 15( 606) + 0 on 4195;
-  architecture comp_architecture of complementer2s at 28( 980) + 0 on 4196;
-file . "REG_FILE.vhdl" "e8578810cb2681026f7a837c11e1a82627c7c14e" "20250104201344.831":
-  entity reg_file at 21( 1039) + 0 on 4219;
-  architecture reg_file_architecture of reg_file at 42( 1695) + 0 on 4220;
+file . "FORWARD.vhdl" "4a92081fe97acfbaa3ad7dcb3d985def8e512e51" "20250205045133.899":
+  entity forwarder at 15( 589) + 0 on 7633;
+  architecture comp_architecture of forwarder at 28( 953) + 0 on 7634;
+file . "SLTU.vhdl" "a021676e38247efe06d8dc0e785606e302f60329" "20250205045134.817":
+  entity setlessthanunsigned at 17( 702) + 0 on 7663;
+  architecture sltu_architecture of setlessthanunsigned at 31( 1133) + 0 on 7664;
+file . "SHIFT.vhdl" "19548ce9e4479eafe5697e28a0fccde00380ab12" "20250205045134.696":
+  entity shifter at 18( 616) + 0 on 7659;
+  architecture shifter_architecture of shifter at 33( 1114) + 0 on 7660;
+file . "MUX2_1.vhdl" "db4f65249d90069c937511d2bf76c46a2711e11c" "20250205045134.149":
+  entity mux2_1 at 17( 643) + 0 on 7641;
+  architecture mux_architecture of mux2_1 at 31( 1053) + 0 on 7642;
+file . "XOR.vhdl" "bb0456e6dcfa322293417eddcb041b3506015dfb" "20250205045134.879":
+  entity xorer at 16( 549) + 0 on 7665;
+  architecture xor_architecture of xorer at 29( 926) + 0 on 7666;
+file . "AND.vhdl" "995f75944cdb6191260d9c7cb84f439aff5f334a" "20250205045133.664":
+  entity ander at 16( 549) + 0 on 7625;
+  architecture and_architecture of ander at 29( 924) + 0 on 7626;
+file . "OR.vhdl" "6f29849663e514570a61e9178ec683871a9b23ff" "20250205045134.274":
+  entity orer at 16( 542) + 0 on 7645;
+  architecture or_architecture of orer at 29( 917) + 0 on 7646;
+file . "ADDER.vhdl" "4428387c4c32704784902cca11b59cb0252d37d4" "20250205045133.540":
+  entity adder at 18( 713) + 0 on 7621;
+  architecture adder_architecture of adder at 32( 1171) + 0 on 7622;
+file . "MUX4_1.vhdl" "8b8d3d3d392d467fef9fbeff69d2a460e803f648" "20250205045134.212":
+  entity mux4_1 at 17( 685) + 0 on 7643;
+  architecture mux_architecture of mux4_1 at 33( 1231) + 0 on 7644;
+file . "SLT.vhdl" "d92dfd0f3ae9f2bbbdb89442b35259ddc58d1678" "20250205045134.755":
+  entity setlessthan at 17( 701) + 0 on 7661;
+  architecture slt_architecture of setlessthan at 31( 1116) + 0 on 7662;
+file . "2sCOMPLEMENTER.vhdl" "e73e9e17ff7eb19e8f5117456614f81ecdacb6e7" "20250205045133.465":
+  entity complementer2s at 15( 606) + 0 on 7619;
+  architecture comp_architecture of complementer2s at 28( 980) + 0 on 7620;
+file . "REG_FILE.vhdl" "bc10d23cdfc1194503be440b7312adc5f79fc9c9" "20250205045134.441":
+  entity reg_file at 21( 1039) + 0 on 7651;
+  architecture reg_file_architecture of reg_file at 42( 1695) + 0 on 7652;
 file . "ALUTB.vhdl" "79a97dcda91e1c850cf3fa4a1457d0ed84e06d3f" "20250102124754.813":
   entity alutb at 15( 599) + 0 on 647;
   architecture alutb_architecture of alutb at 23( 730) + 0 on 648;
-file . "CONTROL_UNIT.vhdl" "f6521c66811d263ebca0e24e4969db727353f4f3" "20250104201344.350":
-  entity control_unit at 24( 1287) + 0 on 4203;
-  architecture control_unit_architecture of control_unit at 40( 1778) + 0 on 4204;
+file . "CONTROL_UNIT.vhdl" "9b7a6ea324417faeb20ce71767433f5e596b73d5" "20250205045133.725":
+  entity control_unit at 24( 1287) + 0 on 7627;
+  architecture control_unit_architecture of control_unit at 40( 1757) + 0 on 7628;
 file . "PCTB.vhdl" "c3735ee865d8669a522ace8ef77dd3375bf7975f" "20250103023340.355":
   entity pctb at 2( 21) + 0 on 1277;
   architecture behavior of pctb at 11( 179) + 0 on 1278;
 file . "Pipeline_Reg_TB.vhdl" "ce78a2ccee9b675e80b7dce78766fb6872a31e8e" "20250104104842.970":
   entity pipeline_reg_tb at 4( 59) + 0 on 1977;
   architecture behavior of pipeline_reg_tb at 13( 239) + 0 on 1978;
-file . "REG_ID_EX.vhdl" "823d08f8fee176e2d7a2203c68f1acc78397da4b" "20250104201344.890":
-  entity reg_id_ex at 15( 699) + 0 on 4221;
-  architecture id_ex_architecture of reg_id_ex at 42( 1542) + 0 on 4222;
-file . "REG_MEM_WB.vhdl" "b2854f2ae5b9c3c97adb6b087e3bc167af25ea54" "20250104201345.022":
-  entity reg_mem_wb at 15( 700) + 0 on 4225;
-  architecture mem_wb_architecture of reg_mem_wb at 38( 1279) + 0 on 4226;
-file . "CPUTB.vhdl" "cf47adfa9d857241c5ef6fb353a38a596fc2e25f" "20250104201345.312":
-  entity cputb at 1( 0) + 0 on 4235;
-  architecture testbench of cputb at 8( 114) + 0 on 4236;
+file . "REG_ID_EX.vhdl" "d4d76a45c51b5e5d01271bfb740b1f784ff528b0" "20250205045134.506":
+  entity reg_id_ex at 15( 699) + 0 on 7653;
+  architecture id_ex_architecture of reg_id_ex at 42( 1658) + 0 on 7654;
+file . "REG_MEM_WB.vhdl" "e6bc545c4e298b6b345afb1aaeefcaa2848e1266" "20250205045134.631":
+  entity reg_mem_wb at 15( 700) + 0 on 7657;
+  architecture mem_wb_architecture of reg_mem_wb at 38( 1311) + 0 on 7658;
+file . "CPUTB.vhdl" "c4b9211b61c6c1053532d67f09d045b78af39c89" "20250205045134.940":
+  entity cputb at 1( 0) + 0 on 7667;
+  architecture testbench of cputb at 8( 114) + 0 on 7668;
+file . "IMM_DECORDER.vhdl" "e7d3ea71574a6fea764e41168fa3094ebc3b15a0" "20250205045134.023":
+  entity imm_decorder at 15( 701) + 0 on 7637;
+  architecture imm_decorder_architecture of imm_decorder at 30( 1014) + 0 on 7638;

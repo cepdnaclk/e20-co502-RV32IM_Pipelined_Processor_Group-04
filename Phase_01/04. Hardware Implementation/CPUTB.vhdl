@@ -8,30 +8,83 @@ end CPUTB ;
 architecture testbench of CPUTB is
   component CPU is
     port(
-      INSTRUCTION : in std_logic_vector (31 downto 0);
+      -- General Ports
       CLK, RESET  : in std_logic;
-      PC          : out std_logic_vector (31 downto 0)
+
+      -- Ports for IMEM
+      INSTRUCTION : in std_logic_vector (31 downto 0);
+      PC          : out std_logic_vector (31 downto 0);
+
+      -- Ports for DMEM
+      DMEMREAD, DMEMWRITE : out std_logic;
+      DFUNC3               : out std_logic_vector (2 downto 0);
+      ALURESULT, DMEMIN   : out std_logic_vector (31 downto 0);
+      DMEMOUT             : in std_logic_vector (31 downto 0)
     );
   end component;
 
-  Signal CLK : std_logic ;
-  Signal RESET : std_logic ;
-  Signal PC, INSTRUCTION : std_logic_vector (31 downto 0);
+  component IMEM is
+    port(
+      ADDRESS     : in std_logic_vector (31 downto 0);
+      INSTRUCTION : out std_logic_vector (31 downto 0)
+    );
+  end component;
+
+  component DMEM is
+    port(
+      MemAddress   : in std_logic_vector (31 downto 0);
+      MemDataInput : in std_logic_vector (31 downto 0);
+      FUNC3        : in std_logic_vector (2 downto 0);
+      CLK, RESET   : in std_logic;
+      MemRead      : in std_logic;
+      MemWrite     : in std_logic;
+      MemOut       : out std_logic_vector (31 downto 0)
+    );
+  end component;
+
+  Signal FUNC3                                       : std_logic_vector (2 downto 0);
+  Signal CLK, RESET, MEMREAD, MEMWRITE               : std_logic;
+  Signal PC, INSTRUCTION, ALURESULT, MEMDATA, MEMOUT : std_logic_vector (31 downto 0);
+
 
   -- Clock period
   constant clk_period : time := 80 ns;
 begin
-  CPU_TEST : CPU
+  RV_CPU : CPU
   port map (
     INSTRUCTION => INSTRUCTION,
     CLK         => CLK,
     RESET       => RESET,
-    PC          => PC
+    PC          => PC,
+    DMEMREAD    => MEMREAD,
+    DMEMWRITE   => MEMWRITE,
+    DFUNC3       => FUNC3,
+    ALURESULT   => ALURESULT,
+    DMEMIN      => MEMDATA,
+    DMEMOUT     => MEMOUT
+  );
+
+  RV_IMEM : IMEM
+  port map (
+    ADDRESS     => PC,
+    INSTRUCTION => INSTRUCTION
+  );
+
+  RV_DMEM : DMEM
+  port map(
+    CLK          => CLK, 
+    RESET        => RESET,
+    MemAddress   => ALURESULT,
+    MemDataInput => MEMDATA,
+    FUNC3        => FUNC3,
+    MemRead      => MEMREAD,
+    MemWrite     => MEMWRITE,
+    MemOut       => MEMOUT
   );
 
   -- Clock Process
   Clocking : process
-    variable clk_cycles : integer := 10;
+    variable clk_cycles : integer := 20;
   begin
       for index in 1 to clk_cycles loop
           -- Sequential statements
@@ -52,57 +105,6 @@ begin
     wait for clk_period;
     RESET <= '0';
     wait;
-  end process;
-
-  -- Stimulus Process
-  process(PC)
-  begin
-
-    case (PC) is  
-      when x"00000000" =>
-        INSTRUCTION <= x"00110033" after 20 ns;
-        report "Instruction No: 1";
-
-      when x"00000004" =>
-        INSTRUCTION <= x"00000233" after 20 ns;
-        report "Instruction No: 2";
-
-      when x"00000008" =>
-        INSTRUCTION <= x"00002033" after 20 ns;
-        report "Instruction No: 3";
-
-      when x"0000000C" =>
-        INSTRUCTION <= x"00000004" after 20 ns;
-        report "Instruction No: 4";
-
-      when x"00000010" =>
-        INSTRUCTION <= x"00000005" after 20 ns;
-        report "Instruction No: 5";
-
-      when x"00000014" =>
-        INSTRUCTION <= x"00000006" after 20 ns;
-        report "Instruction No: 6";
-      
-      when x"00000018" =>
-        INSTRUCTION <= x"00000007" after 20 ns;
-        report "Instruction No: 7";
-
-      when x"0000001C" =>
-        INSTRUCTION <= x"00000008" after 20 ns;
-        report "Instruction No: 8";
-
-      when x"00000020" =>
-        INSTRUCTION <= x"00000009" after 20 ns;
-        report "Instruction No: 9";
-
-      when x"00000024" =>
-        INSTRUCTION <= x"0000000A" after 20 ns;
-        report "Instruction No: 10";
-    
-      when others =>
-        report "Invalid PC";
-        INSTRUCTION <= (others => 'X') after 20 ns;
-    end case ;
   end process;
 
 end architecture ;
