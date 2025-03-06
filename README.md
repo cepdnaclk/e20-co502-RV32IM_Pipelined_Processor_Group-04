@@ -18,3 +18,36 @@ Key objectives include creating a modular, Verilog-based design with a pipelined
 
 This repository will serve as a collaborative platform to document progress, manage code, and host design files, test benches, and reports. By the project's conclusion, a fully functional RV32IM processor will be available, showcasing an efficient and robust processor design tailored for educational and experimental purposes.
 
+## Features  
+- **5-Stage Pipeline**: IF, ID, EX, MEM, WB  
+- **Hazard Handling**:  
+  - Load-use hazard detection and NOP insertion  
+  - Control hazard resolution with branch prediction  
+  - Data hazard mitigation via forwarding  
+- **Memory Unit**: Supports **load/store operations** (LB, LH, LW, SB, SH, SW)  
+- **ALU Operations**: Supports arithmetic, logical, and branching instructions  
+- **Register File**: 32 general-purpose registers with asynchronous reads  
+- **Instruction Memory (IMEM) & Data Memory (DMEM)**
+
+## Hazard Handling  
+The processor handles hazards using the following techniques:  
+
+**Load-Use Hazard**: Detects dependencies between load instructions and subsequent dependent instructions. Inserts a **NOP** and stalls the pipeline.  
+
+**Data Hazard**: Uses a **Forwarding Unit** to forward register values from MEM and WB stages to EX stage.  
+
+**Control Hazard**: Implements **PC freezing and instruction replacement** when a branch is taken.  
+
+## How to Build & Simulate  
+### Requirements  
+- **VHDL Simulator** (ModelSim, GHDL, Xilinx Vivado)
+- **GTKWave**
+### Simulate
+```
+ghdl
+ghdl -r main --wave=waveform.ghw
+gtkwave waveform.ghw
+```
+## References
+- Hennessy, J. L., & Patterson, D. A. (2020). Computer Architecture: A Quantitative Approach.
+- IEEE Std 1800-2019: SystemVerilog—Unified Hardware Design.
