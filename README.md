@@ -22,7 +22,7 @@ This repository will serve as a collaborative platform to document progress, man
 - **5-Stage Pipeline**: IF, ID, EX, MEM, WB  
 - **Hazard Handling**:  
   - Load-use hazard detection and NOP insertion  
-  - Control hazard resolution with branch prediction  
+  - Control hazard handling with pipline flushing  
   - Data hazard mitigation via forwarding  
 - **Memory Unit**: Supports **load/store operations** (LB, LH, LW, SB, SH, SW)  
 - **ALU Operations**: Supports arithmetic, logical, and branching instructions  
