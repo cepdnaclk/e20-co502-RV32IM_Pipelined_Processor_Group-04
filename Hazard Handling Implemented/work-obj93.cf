@@ -1,0 +1,115 @@
+v 4
+file . "load_use.vhdl" "b299fad033f726bf2331ac837d6b7a4e96ac7ef3" "20250223064836.219":
+  entity load_use at 1( 0) + 0 on 631;
+  architecture behavioral of load_use at 13( 373) + 0 on 632;
+file . "branch_fwd.vhdl" "38abfb10fc49eb40a918628d45a38f47baed52b3" "20250222120236.509":
+  entity branch_fwd at 1( 0) + 0 on 485;
+  architecture fwd_arch of branch_fwd at 14( 501) + 0 on 486;
+file . "forwarding_unit.vhdl" "451086503bd4c6772db08b3cedc4f265a81681d9" "20250217035649.277":
+  entity forwarding_unit at 1( 0) + 0 on 379;
+  architecture behavioral of forwarding_unit at 16( 637) + 0 on 380;
+file . "WB_Control.vhdl" "91d8afa2e1f227f7f26dc5f39b0bbc59e5ac528a" "20250216175103.633":
+  entity wb_control at 1( 0) + 0 on 309;
+  architecture behavioral of wb_control at 13( 357) + 0 on 310;
+file . "MEM_Control.vhdl" "a1e677769f61124a2acfd01afb733e9d0efa7468" "20250216102740.736":
+  entity mem_control at 1( 0) + 0 on 291;
+  architecture behavioral of mem_control at 14( 453) + 0 on 292;
+file . "IF_ID_Register.vhdl" "aa76ff21c06b65e980e7ce8ae3f123775702f1f6" "20250222191714.153":
+  entity if_id_register at 1( 0) + 0 on 605;
+  architecture behavioral of if_id_register at 17( 679) + 0 on 606;
+file . "clock.vhdl" "feba2fab691f3d7ec12b3362749f7819447df5bd" "20250209072925.021":
+  entity clock_unit at 1( 0) + 0 on 137;
+  architecture behavioral of clock_unit at 10( 149) + 0 on 138;
+file . "wb_mux.vhdl" "120b3ff1a56f6bc9909970ff3afcaec349736c8f" "20250115111509.682":
+  entity wbmux at 1( 0) + 0 on 55;
+  architecture mux_arch of wbmux at 13( 378) + 0 on 56;
+file . "program_counter.vhdl" "e20f14780f2e7a1df491d113e781fb2e4bbf2d3d" "20250222185120.546":
+  entity pc at 1( 0) + 0 on 591;
+  architecture behavioral of pc at 14( 447) + 0 on 592;
+file . "pcsel.vhdl" "d8bb7657ec08bbc2ec19ea00f77822d52d05c00c" "20250115071419.184":
+  entity pcsel_mux at 1( 0) + 0 on 47;
+  architecture mux_arch of pcsel_mux at 13( 364) + 0 on 48;
+file . "imm_gen.vhdl" "8568f233b405117c609a227567c4ee08571d4ee6" "20250209143504.471":
+  entity immgen at 1( 0) + 0 on 225;
+  architecture behavioral of immgen at 13( 354) + 0 on 226;
+file . "control_unit.vhdl" "0b92d48199b191fe2fc5c8bd33718d6557977787" "20250215192737.428":
+  entity control_unit at 1( 0) + 0 on 253;
+  architecture control_unit_arch of control_unit at 22( 1078) + 0 on 254;
+file . "branch_comp.vhdl" "f567d7e3dbbcc23177868617367e7b2b8322a428" "20250115071315.370":
+  entity branchcomparator at 1( 0) + 0 on 35;
+  architecture behavioral of branchcomparator at 15( 562) + 0 on 36;
+file . "ALU.vhdl" "1db117e597d57b28c3d069b730d0e6f8591fc698" "20250302065410.997":
+  entity alu at 1( 0) + 0 on 665;
+  architecture alu_arch of alu at 14( 429) + 0 on 666;
+file . "mux16x32.vhdl" "b4a2495bbf5d4ae45d3d03766e07f7098769c092" "20250115071143.362":
+  entity mux16x32 at 1( 0) + 0 on 27;
+  architecture mux_arch of mux16x32 at 13( 456) + 0 on 28;
+file . "srl_unit.vhdl" "23631c24bc0171c168ee61e9f172b97059869a53" "20250115071108.038":
+  entity srl_unit at 1( 0) + 0 on 23;
+  architecture srl_arch of srl_unit at 13( 326) + 0 on 24;
+file . "slt_subtract_unit.vhdl" "d52b8c90276ca1f49e22a075b5c84e312a3d7315" "20250302065358.985":
+  entity subtract_slt_unit at 1( 0) + 0 on 663;
+  architecture subtract_arch of subtract_slt_unit at 13( 356) + 0 on 664;
+file . "or_unit.vhdl" "2aa1d08512614c01329efb4bbde6833c6df25280" "20250115071017.780":
+  entity or_unit at 1( 0) + 0 on 15;
+  architecture or_arch of or_unit at 12( 217) + 0 on 16;
+file . "adder_unit.vhdl" "a3cac54bb0d00ccf570970441240f44371a8b9bc" "20250115070943.096":
+  entity adder_unit at 1( 0) + 0 on 11;
+  architecture adder_arch of adder_unit at 12( 224) + 0 on 12;
+file . "and_unit.vhdl" "2af4cecd0a3f7d0950abe930210166df6515b75f" "20250115070956.968":
+  entity and_unit at 1( 0) + 0 on 13;
+  architecture and_arch of and_unit at 12( 220) + 0 on 14;
+file . "sll_unit.vhdl" "bed98d0b7ff672e53b3b36a99b6ca387ba63d5a4" "20250115071029.139":
+  entity sll_unit at 1( 0) + 0 on 17;
+  architecture sll_arch of sll_unit at 13( 326) + 0 on 18;
+file . "sra_unit.vhdl" "1babd9a18129c7e0452c78aa68cc5ebfd906e4ed" "20250115071059.688":
+  entity arithmetic_shift_unit at 1( 0) + 0 on 21;
+  architecture shift_arch of arithmetic_shift_unit at 13( 339) + 0 on 22;
+file . "xor_unit.vhdl" "1c78b8b3347a4cfdb7edf77835fc96d5661e0ab6" "20250115071113.721":
+  entity xor_unit at 1( 0) + 0 on 25;
+  architecture xor_arch of xor_unit at 12( 220) + 0 on 26;
+file . "mul_unit.vhdl" "288ab0d6ab912724fb3ed3e278954a38517b5360" "20250115071200.875":
+  entity mul_unit at 1( 0) + 0 on 29;
+  architecture mul_arch of mul_unit at 14( 478) + 0 on 30;
+file . "asel_mux.vhdl" "ea2a63ed3beec890670597dd392b2c7b45fbdf4f" "20250216175028.173":
+  entity asel_mux at 1( 0) + 0 on 303;
+  architecture mux_arch of asel_mux at 13( 398) + 0 on 304;
+file . "bsel_mux.vhdl" "8df589979bf67520bfb100a78605ea8581fffddc" "20250216175033.073":
+  entity bsel_mux at 1( 0) + 0 on 305;
+  architecture mux_arch of bsel_mux at 13( 398) + 0 on 306;
+file . "data_memory.vhdl" "27a6800a4f8e42e9bc19f3ca952fb0ada47d73d9" "20250306190416.137":
+  entity dmem at 1( 0) + 0 on 711;
+  architecture behavioral of dmem at 16( 610) + 0 on 712;
+file . "instruction_memory.vhdl" "c3af6f8f7d685054da6fdfc395cd2beb6d832863" "20250306204536.575":
+  entity imem at 1( 0) + 0 on 757;
+  architecture behavioral of imem at 13( 355) + 0 on 758;
+file . "program_counter_adder.vhdl" "509222ff7998f429ce301c9572d0914dc780c8ad" "20250223060828.676":
+  entity pc_adder at 1( 0) + 0 on 621;
+  architecture behavioral of pc_adder at 13( 338) + 0 on 622;
+file . "reg_file.vhdl" "91627aa9444285e11b042e938bf5c79b30aae62e" "20250306190342.803":
+  entity register_file at 1( 0) + 0 on 707;
+  architecture behavioral of register_file at 18( 524) + 0 on 708;
+file . "main.vhdl" "f47e85e1d31f3503218b9ed2b3d44cdda7a10662" "20250306204538.652":
+  entity main at 1( 0) + 0 on 759;
+  architecture arch of main at 8( 103) + 0 on 760;
+file . "ID_EX_Register.vhdl" "eb296d534b9e20ca696e63c471d4ec3eea6a0d98" "20250306201154.225":
+  entity id_ex_register at 1( 0) + 0 on 749;
+  architecture behavioral of id_ex_register at 21( 1043) + 0 on 750;
+file . "EX_MEM_Register.vhdl" "9e916527407357317e1ddfb0d4ac77c0915bd7ba" "20250222200443.331":
+  entity ex_mem_register at 1( 0) + 0 on 611;
+  architecture behavioral of ex_mem_register at 22( 1034) + 0 on 612;
+file . "MEM_WB_Register.vhdl" "7f6d241cbc46368c46bee215893a925be8216cd2" "20250216102805.166":
+  entity mem_wb_register at 1( 0) + 0 on 293;
+  architecture behavioral of mem_wb_register at 16( 639) + 0 on 294;
+file . "tb_forwarding_unit.vhdl" "a6cc04b04975ca7ad51c681cba7f0eda08c59162" "20250217034521.279":
+  entity forwarding_unit_tb at 1( 0) + 0 on 377;
+  architecture behavioral of forwarding_unit_tb at 8( 131) + 0 on 378;
+file . "mux2x32.vhdl" "005f00499f068c0fc7b70a4e0cca22576898f35d" "20250222111734.352":
+  entity mux2x32 at 1( 0) + 0 on 469;
+  architecture mux_arch of mux2x32 at 13( 380) + 0 on 470;
+file . "div_unit.vhdl" "33a0230d192ce77013a64db1eb582b5f59cbe86a" "20250302065335.554":
+  entity div_unit at 1( 0) + 0 on 661;
+  architecture div_arch of div_unit at 14( 454) + 0 on 662;
+file . "EX_Control.vhdl" "d88a1e76ece62f9a7a33740a6e8d85fe4c244b72" "20250302065536.444":
+  entity ex_control at 1( 0) + 0 on 671;
+  architecture behavioral of ex_control at 22( 1111) + 0 on 672;
