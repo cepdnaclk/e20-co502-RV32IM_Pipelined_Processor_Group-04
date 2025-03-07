@@ -18,6 +18,12 @@ Key objectives include creating a modular, VHDL-based design with a pipelined ar
 
 This repository will serve as a collaborative platform to document progress, manage code, and host design files, test benches, and reports. By the project's conclusion, a fully functional RV32IM processor will be available, showcasing an efficient and robust processor design tailored for educational and experimental purposes.
 
+## Datapath
+
+Tist is the complete datapeth of the pipelined processor with hazard handling.
+
+![Pipelined Datapath](./Datapath.png)
+
 ## Supported Instructions
 
 | **Opcode**    | **Instruction**  | **Format** | **Description**                          | **Example**            |
