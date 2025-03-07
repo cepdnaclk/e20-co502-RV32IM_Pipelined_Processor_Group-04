@@ -34,6 +34,10 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 This project focuses on the design and implementation of a custom 32-bit RISC-V processor supporting the RV32IM instruction set architecture (ISA). Developed as part of the Advanced Computer Architecture course (CO502), the processor encompasses essential features of the RISC-V standard, including integer operations (RV32I) and multiplication/division (M extension).
 
+## Datapath
+
+![Pipelined Datapath](./images/Datapth.png)
+
 ## Supported Instructions
 
 | **Opcode**    | **Instruction**  | **Format** | **Description**                          | **Example**            |
@@ -103,9 +107,11 @@ The processor handles hazards using the following techniques:
 **Control Hazard**: Implements **pipline flushing and instruction replacement** when a branch is taken.  
 
 ## How to Build & Simulate  
+
 ### Requirements  
-- **VHDL Simulator** (ModelSim, GHDL, Xilinx Vivado)
-- **GTKWave**
+- VHDL Simulator (ModelSim, GHDL, Xilinx Vivado)
+- GTKWave
+  
 ### Simulate
 
 Navigate to the working directory and make sure all files are in the directory. Analyze all .vhdl files before running main.vhdl 
