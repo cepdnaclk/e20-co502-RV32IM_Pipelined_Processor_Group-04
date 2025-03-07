@@ -36,7 +36,7 @@ This project focuses on the design and implementation of a custom 32-bit RISC-V 
 
 ## Datapath
 
-![Pipelined Datapath](./docs/images/Datapth.png)
+![Pipelined Datapath](./images/Datapath.png)
 
 ## Supported Instructions
 
