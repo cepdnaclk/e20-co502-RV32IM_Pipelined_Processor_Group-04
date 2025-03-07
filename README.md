@@ -31,9 +31,13 @@ This repository will serve as a collaborative platform to document progress, man
 | `0110011`     | SLT              | R-Type     | rD = if (rS1 < rS2) return True          | `slt r3, r1, r2`       |
 | `0110011`     | SLTU             | R-Type     | rD = if (rS1(uint) < rS2(uint)) return True | `sltu r3, r1, r2`   |
 | `0110011`     | SRA              | R-Type     | rD = rS1 >>> rS2                         | `sra r3, r1, r2`       |
-| `0110011`     | MUL              | R-Type     | rD = rS1 * rS2                           | `mul r3, r1, r2`       |
-| `0110011`     | DIV              | R-Type     | rD = rS1 / rS2                           | `div r3, r1, r2`       |
-| `0110011`     | REM              | R-Type     | rD = rS1 % rS2                           | `rem r3, r1, r2`       |
+| `0110011`     | MUL              | R-Type (M) | rD = (rS1 * rS2) [31:0]                  | `mul r3, r1, r2`       |
+| `0110011`     | MULU             | R-Type (M) | rD = (rS1(uint) * rS2(uint)) [31:0]      | `mulu r3, r1, r2`      |
+| `0110011`     | MULH             | R-Type (M) | rD = (rS1 * rS2) [63:32]                 | `mulh r3, r1, r2`      |
+| `0110011`     | MULHU            | R-Type (M) | rD = (rS1(uint) * rS2(uint)) [63:32]     | `mulhu r3, r1, r2`     |
+| `0110011`     | DIVU             | R-Type (M) | rD = (rS1(uint) / rS2(uint))             | `divu r3, r1, r2`      |
+| `0110011`     | DIV              | R-Type (M) | rD = rS1 / rS2                           | `div r3, r1, r2`       |
+| `0110011`     | REM              | R-Type (M) | rD = rS1 % rS2                           | `rem r3, r1, r2`       |
 | `0010011`     | ADDI             | I-Type     | rD = rS1 + imm                           | `addi r3, r1, 10`      |
 | `0010011`     | SLTI             | I-Type     | rD = if (rS1 < imm) return True          | `slti r3, r1, 0xFF`    |
 | `0010011`     | SLTIU            | I-Type     | rD = if (rS1(uint) < rS2(uint)) return True | `sltiu r3, r1, 0xFF`|
@@ -60,7 +64,7 @@ This repository will serve as a collaborative platform to document progress, man
 | `0110111`     | LUI              | U-Type     | Load upper immediate                     | `lui r1, 0x12345`      |
 | `0010111`     | AUIPC            | U-Type     | Add upper immediate to PC                | `auipc r1, 0x1000`     |
 
-This table lists all the **RISC-V instructions** supported by the processor.
+This table lists all the 40 RISC-V instructions supported by the processor.
 
 ## Features  
 - **5-Stage Pipeline**: IF, ID, EX, MEM, WB  
@@ -76,22 +80,33 @@ This table lists all the **RISC-V instructions** supported by the processor.
 ## Hazard Handling  
 The processor handles hazards using the following techniques:  
 
-**Load-Use Hazard**: Detects dependencies between load instructions and subsequent dependent instructions. Inserts a **NOP** and stalls the pipeline.  
+**Load-Use Hazard**: Detects dependencies between load instructions and subsequent dependent instructions. Inserts a **NOP** to the pipeline.  
 
 **Data Hazard**: Uses a **Forwarding Unit** to forward register values from MEM and WB stages to EX stage.  
 
-**Control Hazard**: Implements **PC freezing and instruction replacement** when a branch is taken.  
+**Control Hazard**: Implements **pipline flushing and instruction replacement** when a branch is taken.  
 
 ## How to Build & Simulate  
+
 ### Requirements  
 - **VHDL Simulator** (ModelSim, GHDL, Xilinx Vivado)
 - **GTKWave**
+- **VS Code VHDL extension**(optional)
+- 
 ### Simulate
+
 ```
-ghdl
+ghdl -a file_name.vhdl
+```
+
+```
+ghdl -e main
 ghdl -r main --wave=waveform.ghw
 gtkwave waveform.ghw
 ```
+
 ## References
 - Hennessy, J. L., & Patterson, D. A. (2020). Computer Architecture: A Quantitative Approach.
 - IEEE Std 1800-2019: SystemVerilog—Unified Hardware Design.
+- Installing GHDL and GTKWave: https://www.youtube.com/watch?v=0JJku1vTu78
+- Learn VHDL: https://nandland.com/learn-vhdl/
