@@ -31,7 +31,7 @@ This project focuses on the design and implementation of a custom 32-bit RISC-V 
 
 ![Pipelined Datapath](./images/Datapath.png)
 
-## Supported Instructions
+## Supported Instructions<br>
 
 | **Opcode** | **Instruction** | **Format** | **Description** | **Example** |
 |------------|----------------|------------|-----------------|-------------|
@@ -77,7 +77,7 @@ This project focuses on the design and implementation of a custom 32-bit RISC-V 
 | 0110111    | LUI            | U-Type     | Load upper immediate | lui r1, 0x12345 |
 | 0010111    | AUIPC          | U-Type     | Add upper immediate to PC | auipc r1, 0x1000 |
 
-## Features
+## Features<br>
 - **5-Stage Pipeline**: IF, ID, EX, MEM, WB
 - **Hazard Handling**:
   - Load-use hazard detection and NOP insertion
@@ -88,7 +88,7 @@ This project focuses on the design and implementation of a custom 32-bit RISC-V 
 - **Register File**: 32 general-purpose registers with asynchronous reads
 - **Instruction Memory (IMEM) & Data Memory (DMEM)**
 
-## Hazard Handling
+## Hazard Handling<br>
 The processor handles hazards using the following techniques:
 
 **Load-Use Hazard**: Detects dependencies between load instructions and subsequent dependent instructions. Inserts a **NOP** to the pipeline.
@@ -97,18 +97,18 @@ The processor handles hazards using the following techniques:
 
 **Control Hazard**: Implements **pipeline flushing and instruction replacement** when a branch is taken.
 
-## How to Build and Simulate
+## How to Build and Simulate<br>
 
 ### Requirements
 - VHDL Simulator (ModelSim, GHDL, Xilinx Vivado)
 - GTKWave
 
 ### Simulate
-Navigate to the working directory and make sure all files are in the directory. Analyze all .vhdl files before running main.vhdl:
- ghdl -a *.vhdl
- ghdl -e main
- ghdl -r main --wave=wave.ghw
- gtkwave wave.ghw
+Navigate to the working directory and make sure all files are in the directory. Analyze all .vhdl files before running main.vhdl:<br>
+ ghdl -a *.vhdl<br>
+ ghdl -e main<br>
+ ghdl -r main --wave=wave.ghw<br>
+ gtkwave wave.ghw<br>
 
 ## References
 - Hennessy, J. L., & Patterson, D. A. (2020). Computer Architecture: A Quantitative Approach.
