@@ -25,7 +25,7 @@ This repository will serve as a collaborative platform to document progress, man
 | `0110011`     | ADD              | R-Type     | rD = rS1 + rS2                           | `add r3, r1, r2`       |
 | `0110011`     | SUB              | R-Type     | rD = rS1 - rS2                           | `sub r3, r1, r2`       |
 | `0110011`     | AND              | R-Type     | rD = rS1 & rS2                           | `and r3, r1, r2`       |
-| `0110011`     | OR               | R-Type     | rD = rS1 | rS2                           | `or r3, r1, r2`        |
+| `0110011`     | OR               | R-Type     | rD = rS1 \| rS2                          | `or r3, r1, r2`        |
 | `0110011`     | XOR              | R-Type     | rD = rS1 ^ rS2                           | `xor r3, r1, r2`       |
 | `0110011`     | SLL              | R-Type     | rD = rS1 << rS2                          | `sll r3, r1, r2`       |
 | `0110011`     | SLT              | R-Type     | rD = if (rS1 < rS2) return True          | `slt r3, r1, r2`       |
