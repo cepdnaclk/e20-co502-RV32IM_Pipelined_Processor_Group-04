@@ -19,7 +19,7 @@ repository-name: e20-co502-RV32IM_Pipelined_Processor_Group-04
 3. [Supported Instructions](#supported-instructions)
 4. [Features](#features)
 5. [Hazard Handling](#hazard-handling)
-6. [How to Build & Simulate](#how-to-build--simulate)
+6. [How to Build & Simulate](#how-to-build-and-simulate)
 7. [References](#references)
 8. [Links](#links)
 
@@ -97,7 +97,7 @@ The processor handles hazards using the following techniques:
 
 **Control Hazard**: Implements **pipeline flushing and instruction replacement** when a branch is taken.
 
-## How to Build & Simulate
+## How to Build and Simulate
 
 ### Requirements
 - VHDL Simulator (ModelSim, GHDL, Xilinx Vivado)
@@ -117,7 +117,7 @@ Navigate to the working directory and make sure all files are in the directory. 
 - Learn VHDL: https://nandland.com/learn-vhdl/
 
 ## Links
-- [Project Repository](https://github.com/cepdnaclk/e20-co502-RV32IM_Pipelined_Processor_Group-04){:target="_blank"}
-- [Project Page](https://cepdnaclk.github.io/e20-co502-RV32IM_Pipelined_Processor_Group-04/){:target="_blank"}
+- [Project Repository](https://github.com/cepdnaclk/e20-co502-RV32IM_Pipelined_Processor_Group-04)
+- [Project Page](https://cepdnaclk.github.io/e20-co502-RV32IM_Pipelined_Processor_Group-04/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
