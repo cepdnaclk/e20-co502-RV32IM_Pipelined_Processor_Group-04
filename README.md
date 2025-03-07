@@ -96,12 +96,9 @@ The processor handles hazards using the following techniques:
 ### Simulate
 
 ```
-ghdl -a file_name.vhdl
-```
-
-```
+ghdl -a *.vhdl
 ghdl -e main
-ghdl -r main --wave=waveform.ghw
+ghdl -r main --wave=wave.ghw
 gtkwave waveform.ghw
 ```
 
