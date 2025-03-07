@@ -114,6 +114,7 @@ The processor handles hazards using the following techniques:
 ## How to Build & Simulate  
 
 ### Requirements  
+
 - VHDL Simulator (ModelSim, GHDL, Xilinx Vivado)
 - GTKWave
   
@@ -129,11 +130,12 @@ gtkwave waveform.ghw
 ```
 
 ## References
+
 - Hennessy, J. L., & Patterson, D. A. (2020). Computer Architecture: A Quantitative Approach.
 - IEEE Std 1800-2019: SystemVerilog—Unified Hardware Design.
 - Installing GHDL and GTKWave: https://www.youtube.com/watch?v=0JJku1vTu78
 - Learn VHDL: https://nandland.com/learn-vhdl/
-- 
+  
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e20-co502-RV32IM_Pipelined_Processor_Group-04){:target="_blank"}
