@@ -26,8 +26,13 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Table of Contents
 1. [Abstract](#abstract)
-2. [Links](#links)
-
+2. [Datapath](#datapath)
+3. [Supported Instructions](#supported-instructions)
+4. [Features](#features)
+5. [Hazard Handling](#hazard-handling)
+6. [How to Build & Simulate](#how-to-build-&-simulate)
+7. [References](#references)
+8. [Links](#links)
 ---
 
 ## Abstract
