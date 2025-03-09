@@ -2,13 +2,13 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity mux16x32 is
+entity mux16x1 is
     port(
         IN0, IN1, IN2, IN3, IN4, IN5, IN6, IN7, IN8, IN9, IN10, IN11, IN12, IN13, IN14, IN15 : in std_logic_vector(31 downto 0); -- 16 separate 32-bit inputs
         SEL     : in std_logic_vector(3 downto 0);       -- 4-bit selection signal
         DATA_OUT : out std_logic_vector(31 downto 0)    -- 32-bit selected output
     );
-end mux16x32;
+end mux16x1;
 
 architecture mux_arch of mux16x32 is
 begin
