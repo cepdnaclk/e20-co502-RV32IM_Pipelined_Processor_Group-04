@@ -62,7 +62,7 @@ begin
         );
 
     -- Instantiating the Branch FW Sel Mux 2
-    BR_FWD_MUX2: entity work.mux2x32
+    BR_FWD_MUX2: entity work.mux2x1
         port map(
             IN0 => dataR2, 
             IN1 => ALUR_MEM,
@@ -71,7 +71,7 @@ begin
         );
 
     -- Instantiating the Branch FW Sel Mux 1
-    BR_FWD_MUX1: entity work.mux2x32
+    BR_FWD_MUX1: entity work.mux2x1
         port map(
             IN0 => dataR1, 
             IN1 => ALUR_MEM,
