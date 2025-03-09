@@ -2,15 +2,15 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity mux2x32 is
+entity mux2x1 is
     port(
         IN0, IN1: in std_logic_vector(31 downto 0);     -- 16 separate 32-bit inputs
         SEL     : in std_logic;                         -- 4-bit selection signal
         DATA_OUT : out std_logic_vector(31 downto 0)    -- 32-bit selected output
     );
-end mux2x32;
+end mux2x1;
 
-architecture mux_arch of mux2x32 is
+architecture mux_arch of mux2x1 is
 begin
     process(IN0, IN1, SEL)
     begin
