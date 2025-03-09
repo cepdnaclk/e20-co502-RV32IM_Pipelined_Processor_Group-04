@@ -98,7 +98,7 @@ The processor handles hazards using the following techniques:
 - **VHDL Simulator** (ModelSim, GHDL, Xilinx Vivado)
 - **GTKWave**
 - **VS Code VHDL extension**(optional)
-- 
+
 ### Simulate
 
 ```

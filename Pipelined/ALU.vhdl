@@ -114,7 +114,7 @@ begin
             REM_RESULT => rem_result
         );
 
-    MUX16x32: entity work.mux16x32
+    MUX16x1: entity work.mux16x1
         port map(
             IN0 => add_result,
             IN1 => sub_result,
