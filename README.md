@@ -16,8 +16,6 @@ This project focuses on the design and implementation of a custom 32-bit RISC-V 
 
 Key objectives include creating a modular, VHDL-based design with a pipelined architecture to optimize performance. The project will also incorporate testing and verification using simulation tools to ensure accuracy and compliance with the RISC-V specification.
 
-This repository will serve as a collaborative platform to document progress, manage code, and host design files, test benches, and reports. By the project's conclusion, a fully functional RV32IM processor will be available, showcasing an efficient and robust processor design tailored for educational and experimental purposes.
-
 ## Datapath
 
 Tist is the complete datapeth of the pipelined processor with hazard handling.
