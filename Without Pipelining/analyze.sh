@@ -1,0 +1,29 @@
+ghdl -a adder_unit.vhdl
+ghdl -a and_unit.vhdl
+ghdl -a div_unit.vhdl
+ghdl -a or_unit.vhdl
+ghdl -a sll_unit.vhdl
+ghdl -a slt_subtract_unit.vhdl
+ghdl -a sra_unit.vhdl
+ghdl -a srl_unit.vhdl
+ghdl -a xor_unit.vhdl
+ghdl -a mul_unit.vhdl
+ghdl -a mux16x1.vhdl
+ghdl -a asel_mux.vhdl
+ghdl -a branch_comp.vhdl
+ghdl -a bsel_mux.vhdl
+ghdl -a data_memory.vhdl
+ghdl -a imm_gen.vhdl
+ghdl -a instruction_memory.vhdl
+ghdl -a pcsel.vhdl
+ghdl -a program_counter.vhdl
+ghdl -a program_counter_adder.vhdl
+ghdl -a reg_file.vhdl
+ghdl -a wb_mux.vhdl
+ghdl -a ALU.vhdl
+ghdl -a clock.vhdl
+ghdl -a control_unit.vhdl
+ghdl -a main.vhdl
+ghdl -e main
+ghdl -r main --stop-time=100us --wave=waveform.ghw
+gtkwave waveform.ghw

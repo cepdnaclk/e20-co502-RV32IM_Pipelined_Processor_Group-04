@@ -25,7 +25,7 @@ begin
     begin
         if memRW = '0' then
             -- Convert 32-bit address to integer
-            byte_addr := to_integer(unsigned(addr(13 downto 0))); -- Use lower 13 bits for 8KB memory
+            byte_addr := to_integer(unsigned(addr(12 downto 0))); -- Use lower 13 bits for 8KB memory
 
             -- Read operation
             case func3 is

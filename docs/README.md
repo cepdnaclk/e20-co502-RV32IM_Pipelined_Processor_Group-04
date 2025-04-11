@@ -105,10 +105,7 @@ The processor handles hazards using the following techniques:
 
 ### Simulate
 Navigate to the working directory and make sure all files are in the directory. Analyze all .vhdl files before running main.vhdl:<br>
- ghdl -a *.vhdl<br>
- ghdl -e main<br>
- ghdl -r main --wave=wave.ghw<br>
- gtkwave wave.ghw<br>
+./analyze.sh
 
 ## References
 - Hennessy, J. L., & Patterson, D. A. (2020). Computer Architecture: A Quantitative Approach.
