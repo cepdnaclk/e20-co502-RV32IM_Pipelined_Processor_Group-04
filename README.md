@@ -18,7 +18,7 @@ Key objectives include creating a modular, VHDL-based design with a pipelined ar
 
 ## Datapath
 
-Shown below is the complete datapeth of the pipelined processor with hazard handling.
+Shown below is the complete datapath of the pipelined processor with hazard handling.
 
 ![Pipelined Datapath](./Datapath.png)
 
