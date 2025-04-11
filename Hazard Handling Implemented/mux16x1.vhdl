@@ -10,7 +10,7 @@ entity mux16x1 is
     );
 end mux16x1;
 
-architecture mux_arch of mux16x32 is
+architecture mux_arch of mux16x1 is
 begin
     process(IN0, IN1, IN2, IN3, IN4, IN5, IN6, IN7, IN8, IN9, IN10, IN11, IN12, IN13, IN14, IN15, SEL)
     begin
