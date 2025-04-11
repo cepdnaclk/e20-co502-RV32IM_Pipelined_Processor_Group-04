@@ -12,7 +12,6 @@ ghdl -a asel_mux.vhdl
 ghdl -a branch_comp.vhdl
 ghdl -a branch_fwd.vhdl
 ghdl -a bsel_mux.vhdl
-ghdl -a control_unit.vhdl
 ghdl -a data_memory.vhdl
 ghdl -a EX_Control.vhdl
 ghdl -a EX_MEM_Register.vhdl
