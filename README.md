@@ -100,47 +100,7 @@ The processor handles hazards using the following techniques:
 ### Simulate
 
 ```
-ghdl -a adder_unit.vhdl
-ghdl -a and_unit.vhdl
-ghdl -a div_unit.vhdl
-ghdl -a or_unit.vhdl
-ghdl -a sll_unit.vhdl
-ghdl -a slt_subtract_unit.vhdl
-ghdl -a sra_unit.vhdl
-ghdl -a srl_unit.vhdl
-ghdl -a xor_unit.vhdl
-ghdl -a mul_unit.vhdl
-ghdl -a asel_mux.vhdl
-ghdl -a branch_comp.vhdl
-ghdl -a branch_fwd.vhdl
-ghdl -a bsel_mux.vhdl
-ghdl -a control_unit.vhdl
-ghdl -a data_memory.vhdl
-ghdl -a EX_Control.vhdl
-ghdl -a EX_MEM_Register.vhdl
-ghdl -a forwarding_unit.vhdl
-ghdl -a ID_Control.vhdl
-ghdl -a ID_EX_Register.vhdl
-ghdl -a IF_ID_Register.vhdl
-ghdl -a imm_gen.vhdl
-ghdl -a instruction_memory.vhdl
-ghdl -a load_use.vhdl
-ghdl -a MEM_Control.vhdl
-ghdl -a MEM_WB_Register.vhdl
-ghdl -a mux16x1.vhdl
-ghdl -a mux2x1.vhdl
-ghdl -a pcsel.vhdl
-ghdl -a program_counter.vhdl
-ghdl -a program_counter_adder.vhdl
-ghdl -a reg_file.vhdl
-ghdl -a WB_Control.vhdl
-ghdl -a wb_mux.vhdl
-ghdl -a tb_forwarding_unit.vhdl
-ghdl -a ALU.vhdl
-ghdl -a main.vhdl
-ghdl -e main
-ghdl -r main --wave=waveform.ghw
-gtkwave waveform.ghw
+./analyze.sh
 ```
 
 ## References
